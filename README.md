@@ -38,6 +38,11 @@ expo install react-native-gesture-handler react-native-reanimated react-native-s
 npm install --save-dev @testing-library/react-native jest-expo @testing-library/jest-native
 ```
 
+```
+npm install --save-dev jest @types/jest ts-jest @testing-library/react-native @testing-library/jest-native jest-expo
+
+```
+
 起動方法
 ```
 npm start

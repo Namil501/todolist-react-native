@@ -1,20 +1,47 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import TaskListScreen from './src/screens/TaskListScreen';
+import { TaskProvider } from './src/context/TaskContext';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+const Stack = createNativeStackNavigator();
+
+
+const initialTasks = [
+  // {
+  //   id: 1,
+  //   name: 'React Native 공부하기',
+  //   startDate: new Date(),
+  //   dueDate: new Date(),
+  //   difficulty: '보통',
+  //   priority: '중간',
+  //   description: 'React Native를 학습합니다.',
+  //   status: '미착수',
+  //   category: '공부',
+  // },
+  // {
+  //   id: 2,
+  //   name: '운동하기',
+  //   startDate: new Date(),
+  //   dueDate: new Date(),
+  //   difficulty: '쉬움',
+  //   priority: '높음',
+  //   description: '매일 30분씩 조깅합니다.',
+  //   status: '진행 중',
+  //   category: '건강',
+  // },
+];
+
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <TaskProvider initialTasks={initialTasks}>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name="TaskList" component={TaskListScreen} options={{ title: 'Task一覧' }} />
+          {/* 다른 스크린을 추가할 수 있습니다. */}
+        </Stack.Navigator>
+      </NavigationContainer>
+    </TaskProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
